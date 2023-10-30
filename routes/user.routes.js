@@ -35,7 +35,7 @@ UserRouter.post("/login",async(req,res)=>{
         if(result){
             res.status(200).json({msg:"Login SuccessFull","token":token})
         }else{
-            res.status(400).json({msg:"Wrong Password",user:user,password:password,result:result})
+            res.status(400).json({msg:"Wrong Password"})
         }
     });
           
