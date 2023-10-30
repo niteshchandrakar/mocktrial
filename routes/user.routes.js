@@ -34,12 +34,12 @@ UserRouter.post("/login",async(req,res)=>{
         if(result){
             res.status(200).json({msg:"Login SuccessFull","token":token})
         }else{
-            res.status(400).json("Wrong Password")
+            res.status(400).json({msg:"Wrong Password"})
         }
     });
           
         }else{
-            res.status(400).json("Register First")
+            res.status(400).json({msg:"Register First"})
         }
     }catch(error){
         res.status(400).json({msg:error.message})

@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get("/",(req,res)=>{
-    res.status(200).send({msg:"HomePage"})
+    res.status(200).send({msg:"HomePagee"})
 })
 
 app.use("/users",UserRouter)
