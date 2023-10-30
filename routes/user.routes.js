@@ -29,18 +29,19 @@ UserRouter.post("/login",async(req,res)=>{
         const {email,password}=req.body
         const user= await userModel.findOne({email})
         if(user){
-       const token=     jwt.sign({  email: user.email }, 'masai');
-       bcrypt.compare(password, user.password, async(err, result)=> {
+    //    const token=     jwt.sign({  email: user.email }, 'masai');
+    //    bcrypt.compare(password, user.password, async(err, result)=> {
        
-        if(result){
-            res.status(200).json({msg:"Login SuccessFull","token":token})
-        }else{
-            res.status(400).json({msg:"Wrong Password",user:user,password:password,result:result})
-        }
-    });
+    //     if(result){
+    //         res.status(200).json({msg:"Login SuccessFull","token":token})
+    //     }else{
+    //         res.status(400).json({msg:"Wrong Password",user:user,password:password,result:result})
+    //     }
+    // });
+    res.status(400).json({msg:user})
           
         }else{
-            res.status(400).json({msg:"Register First"})
+            res.status(400).json({msg:user})
         }
     }catch(error){
         res.status(400).json({msg:error.message})
