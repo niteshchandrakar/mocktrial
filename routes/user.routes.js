@@ -31,10 +31,11 @@ UserRouter.post("/login",async(req,res)=>{
         if(user){
        const token=     jwt.sign({  email: user.email }, 'masai');
        bcrypt.compare(password, user.password, async(err, result)=> {
+        
         if(result){
             res.status(200).json({msg:"Login SuccessFull","token":token})
         }else{
-            res.status(400).json({msg:"Wrong Password"})
+            res.status(400).json({msg:"Wrong Password",user:user,password:password,result})
         }
     });
           
