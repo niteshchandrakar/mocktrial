@@ -27,7 +27,7 @@ res.status(200).json({msg:"Registraion Successfull"})
 UserRouter.post("/login",async(req,res)=>{
     try{
         const {email,password}=req.body
-        const user= await userModel.findOne({email:email})
+        const user= await userModel.findOne({email})
         if(user){
        const token=     jwt.sign({  email: user.email }, 'masai');
        bcrypt.compare(password, user.password, async(err, result)=> {
@@ -40,7 +40,7 @@ UserRouter.post("/login",async(req,res)=>{
     });
           
         }else{
-            res.status(400).json({msg:"Register First",user:user})
+            res.status(400).json({msg:"Register First",user:email})
         }
     }catch(error){
         res.status(400).json({msg:error.message})
