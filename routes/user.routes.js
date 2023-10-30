@@ -17,9 +17,9 @@ UserRouter.post("/register",async(req,res)=>{
 await newuser.save()
 });
 
-res.status(200).send({msg:"Registraion Successfull"})
+res.status(200).json({msg:"Registraion Successfull"})
     }catch(error){
-        res.status(400).send({msg:error.message})
+        res.status(400).json({msg:error.message})
     }
 })
 
