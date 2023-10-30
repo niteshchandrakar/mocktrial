@@ -1,21 +1,16 @@
 const jwt=require("jsonwebtoken")
+const auth=(req,res,next)=>{
+    const token=req.headers.authorization
 
-const auth=async(req,res,next)=>{
-   try{
-    let token=req.headers.authorization
-    
-    jwt.verify(token, 'masai', (err, decoded)=> {
-       if(decoded){
-        req.body.username=decoded.username
-        next()
-       }else{
-        res.status(400).send("not authorized")
-       }
+    jwt.verify(token, 'masai', async(err, decoded)=> {
+        if(decoded){
+            next()
+           }else{
+            res.status(400).send({msg:"Login first"})
+           }
       });
-   
-   }catch(error){
-    res.status(400).send({msg:error.message})
-   }
+
+ 
 }
 
 module.exports=auth
