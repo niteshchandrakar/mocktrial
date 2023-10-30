@@ -4,10 +4,10 @@ const bcrypt=require("bcrypt")
 const userModel=require("../model/user.model")
 const UserRouter=express.Router()
 
-// UserRouter.get("/",async(req,res)=>{
-//     const newuser= await userModel.find()
-//     res.status(200).send({msg:newuser})
-// })
+UserRouter.get("/",async(req,res)=>{
+    const newuser= await userModel.find()
+    res.status(200).send({msg:newuser})
+})
 
 UserRouter.post("/register",async(req,res)=>{
     try{
