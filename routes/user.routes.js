@@ -6,7 +6,7 @@ const UserRouter=express.Router()
 
 UserRouter.get("/",async(req,res)=>{
     const newuser= await userModel.find()
-    res.status(200).send({msg:newuser})
+    res.status(200).json({msg:newuser})
 })
 
 UserRouter.post("/register",async(req,res)=>{
