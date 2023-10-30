@@ -40,7 +40,7 @@ UserRouter.post("/login",async(req,res)=>{
     });
           
         }else{
-            res.status(400).json({msg:"Register First",user:email})
+            res.status(400).json({msg:"Register First"})
         }
     }catch(error){
         res.status(400).json({msg:error.message})
